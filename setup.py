@@ -4,7 +4,9 @@ from setuptools import setup
 
 TERRAFORM_VERSION = "0.11.8"
 
-__version__ = f"{TERRAFORM_VERSION}+1"
+RELEASE_VERSION = "2"
+
+__version__ = f"{TERRAFORM_VERSION}.post{RELEASE_VERSION}"
 
 setup(
     name="terraform-binary",
@@ -13,12 +15,13 @@ setup(
     author="Paris Kasidiaris",
     author_email="paris@sourcelair.com",
     url="https://github.com/sourcelair/terraform-binary/",
-    py_modules=["terraform"],
-    data_files=[("lib", ["lib/terraform"])],
+    packages=["terraform"],
+    package_dir={"teraform": "terraform"},
+    package_data={"terraform": "lib/*"},
     entry_points={
-        'console_scripts': [
-            'terraform = terraform:main',
-            'tf-binary-download = terraform:download',
-        ],
-    }
+        "console_scripts": [
+            "terraform = terraform.terraform:main",
+            "tf-binary-download = terraform.terraform:download",
+        ]
+    },
 )
