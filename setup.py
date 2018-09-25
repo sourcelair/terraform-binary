@@ -15,13 +15,14 @@ setup(
     author="Paris Kasidiaris",
     author_email="paris@sourcelair.com",
     url="https://github.com/sourcelair/terraform-binary/",
-    packages=["terraform"],
-    package_dir={"teraform": "terraform"},
-    package_data={"terraform": "lib/*"},
+    py_modules=["terraform"],
+    data_files=[
+        ("lib", ["lib/terraform"]),
+    ],
     entry_points={
         "console_scripts": [
-            "terraform = terraform.terraform:main",
-            "tf-binary-download = terraform.terraform:download",
+            "terraform = terraform:main",
+            "tf-binary-download = terraform:download",
         ]
     },
 )

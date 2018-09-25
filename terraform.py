@@ -1,15 +1,21 @@
 """Python wrapper for Hashicorp's Terraform pre-built binary."""
 
-TERRAFORM_VERSION = "0.11.8"
-
-__version__ = f"{TERRAFORM_VERSION}+1"
-
-
 import os
 import stat
 import sys
 import urllib.request
 import zipfile
+
+
+BASE_DIR = os.path.dirname(__file__)
+TERRAFORM_VERSION = "0.11.8"
+TERRAFORM_EXECUTABLE_SYSTEM = os.path.join(sys.prefix, 'lib/terraform')
+TERRAFORM_EXECUTABLE_LOCAL = os.path.join(BASE_DIR, 'lib/terraform')
+TERRAFORM_EXECUTABLE = (
+    TERRAFORM_EXECUTABLE_SYSTEM
+    if os.path.exists(TERRAFORM_EXECUTABLE_SYSTEM)
+    else TERRAFORM_EXECUTABLE_LOCAL
+)
 
 
 def download(version=TERRAFORM_VERSION, platform="linux_amd64"):
@@ -36,7 +42,4 @@ def download(version=TERRAFORM_VERSION, platform="linux_amd64"):
 
 def main():
     args = [] if len(sys.argv) < 2 else sys.argv[1:]
-    executable = os.path.join(
-        os.path.dirname(__file__), 'lib/terraform',
-    )
-    os.execv(executable, ["terraform"] + args)
+    os.execv(TERRAFORM_EXECUTABLE, ["terraform"] + args)
