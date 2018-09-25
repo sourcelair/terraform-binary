@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+black = "==18.6b4"
+
+[dev-packages]
+black = "*"
+wheel = "*"
+setuptools = "*"
+
+[requires]
+python_version = "3.6"
