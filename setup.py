@@ -2,9 +2,9 @@
 
 from setuptools import setup
 
-TERRAFORM_VERSION = "0.11.8"
+TERRAFORM_VERSION = "0.11.11"
 
-RELEASE_VERSION = "2"
+RELEASE_VERSION = "1"
 
 __version__ = f"{TERRAFORM_VERSION}.post{RELEASE_VERSION}"
 

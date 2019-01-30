@@ -8,7 +8,7 @@ import zipfile
 
 
 BASE_DIR = os.path.dirname(__file__)
-TERRAFORM_VERSION = "0.11.8"
+TERRAFORM_VERSION = "0.11.11"
 TERRAFORM_EXECUTABLE_SYSTEM = os.path.join(sys.prefix, 'lib/terraform')
 TERRAFORM_EXECUTABLE_LOCAL = os.path.join(BASE_DIR, 'lib/terraform')
 TERRAFORM_EXECUTABLE = (
