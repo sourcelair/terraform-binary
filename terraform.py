@@ -5,10 +5,11 @@ import stat
 import sys
 import urllib.request
 import zipfile
+import platform
 
 
 BASE_DIR = os.path.dirname(__file__)
-TERRAFORM_VERSION = "0.11.11"
+TERRAFORM_VERSION = "0.11.13"
 TERRAFORM_EXECUTABLE_SYSTEM = os.path.join(sys.prefix, 'lib/terraform')
 TERRAFORM_EXECUTABLE_LOCAL = os.path.join(BASE_DIR, 'lib/terraform')
 TERRAFORM_EXECUTABLE = (
@@ -18,9 +19,10 @@ TERRAFORM_EXECUTABLE = (
 )
 
 
-def download(version=TERRAFORM_VERSION, platform="linux_amd64"):
+def download(version=TERRAFORM_VERSION):
+    platform_name = platform.system()
     base_url = f"https://releases.hashicorp.com/terraform/{version}"
-    file_name = f"terraform_{version}_{platform}.zip"
+    file_name = f"terraform_{version}_{platform_name.lower()}_amd64.zip"
     download_url = f"{base_url}/{file_name}"
 
     download_directory = "downloads"

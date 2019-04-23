@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-TERRAFORM_VERSION = "0.11.11"
+TERRAFORM_VERSION = "0.11.13"
 
 RELEASE_VERSION = "1"
 
