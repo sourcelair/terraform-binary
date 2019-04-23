@@ -8,6 +8,15 @@ RELEASE_VERSION = "1"
 
 __version__ = f"{TERRAFORM_VERSION}.post{RELEASE_VERSION}"
 
+try:
+    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
+    class bdist_wheel(_bdist_wheel):
+        def finalize_options(self):
+            _bdist_wheel.finalize_options(self)
+            self.root_is_pure = False
+except ImportError:
+    bdist_wheel = None
+
 setup(
     name="terraform-binary",
     version=__version__,
@@ -19,6 +28,7 @@ setup(
     data_files=[
         ("lib", ["lib/terraform"]),
     ],
+    cmdclass={'bdist_wheel': bdist_wheel},
     entry_points={
         "console_scripts": [
             "terraform = terraform:main",
