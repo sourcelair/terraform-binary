@@ -20,9 +20,9 @@ TERRAFORM_EXECUTABLE = (
 
 
 def download(version=TERRAFORM_VERSION):
-    platform_name = platform.system()
+    platform_name = platform.system().lower()
     base_url = f"https://releases.hashicorp.com/terraform/{version}"
-    file_name = f"terraform_{version}_{platform_name.lower()}_amd64.zip"
+    file_name = f"terraform_{version}_{platform_name}_amd64.zip"
     download_url = f"{base_url}/{file_name}"
 
     download_directory = "downloads"
