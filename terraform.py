@@ -9,7 +9,7 @@ import platform
 
 
 BASE_DIR = os.path.dirname(__file__)
-TERRAFORM_VERSION = "0.11.13"
+TERRAFORM_VERSION = "0.12.5"
 TERRAFORM_EXECUTABLE_SYSTEM = os.path.join(sys.prefix, 'lib/terraform')
 TERRAFORM_EXECUTABLE_LOCAL = os.path.join(BASE_DIR, 'lib/terraform')
 TERRAFORM_EXECUTABLE = (
